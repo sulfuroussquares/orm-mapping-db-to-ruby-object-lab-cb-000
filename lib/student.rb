@@ -79,9 +79,9 @@ def self.first_X_students_in_grade_10(x)
   sql = <<-SQL
 SELECT * FROM students
 WHERE grade < 10
-ORDER BY name LIMIT 2
+ORDER BY name LIMIT ?
 SQL
-DB[:conn].execute(sql, self.name, self.grade)
+DB[:conn].execute(sql, x)
 DB[:conn].execute(sql).map do |row|
 self.new_from_db(row)
 end #end loop
