@@ -1,6 +1,5 @@
 class Student
   attr_accessor :id, :name, :grade
-  rows = []
 
   def self.new_from_db(row)
     new_obj = self.new
@@ -8,17 +7,15 @@ class Student
     new_obj.name = row[1]
     new_obj.grade = row[2]
     new_obj
-    rows << self
   end
 
   def self.all
-#sql = <<-SQL
-#SELECT *
-#FROM students
-#SQL
-#DB[:conn].execute(sql)
-#self.new_from_db(row)
-rows
+sql = <<-SQL
+SELECT *
+FROM students
+SQL
+DB[:conn].execute(sql)
+self.new_from_db(row)
   end
 
   def self.find_by_name(name)
