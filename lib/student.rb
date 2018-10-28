@@ -82,7 +82,6 @@ WHERE grade < 10
 LIMIT ?
 SQL
 DB[:conn].execute(sql, x)
-end #end loop
 end
 
 end
